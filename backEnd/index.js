@@ -1,13 +1,15 @@
 const express = require('express');
+const cors = require('cors');
 const {getConnection} = require('./db/db-connection-mongo');
 
 const app = express();
-const port = 3000;
+const port = 4000;
 
 getConnection();
 
 //Parseo json
 app.use(express.json());
+app.use(cors());
 
 app.use('/usuario', require('./router/usuario'));
 app.use('/estado-equipo', require('./router/estadoEquipo'));
